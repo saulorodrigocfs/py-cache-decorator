@@ -2,15 +2,15 @@ from typing import Callable
 
 
 def cache(func: Callable) -> Callable:
-    memoria = {}
+    cache_store = {}
 
     def inner(*args) -> None:
-        if args in memoria:
-            result = memoria[args]
+        if args in cache_store:
+            result = cache_store[args]
             print("Getting from cache")
         else:
             result = func(*args)
-            memoria[args] = result
+            cache_store[args] = result
             print("Calculating new result")
         return result
     return inner
