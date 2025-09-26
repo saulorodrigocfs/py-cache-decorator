@@ -4,6 +4,7 @@ import functools
 
 def cache(func: Callable) -> Callable:
     cache_store = {}
+
     @functools.wraps(func)
     def inner(*args, **kwargs) -> Any:
         sorted_kwargs = tuple(sorted(kwargs.items()))
